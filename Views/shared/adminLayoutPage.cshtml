@@ -1,0 +1,63 @@
+﻿@{
+    ViewBag.Title = "adminLayoutPage";
+}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Footrick</title>
+
+    <link href="~/content/bootstrap/bootstrap.css" rel="stylesheet" />
+    <script src="~/content/bootstrap/bootstrap.js"></script>
+
+    <style>
+        #t1:hover {
+            background-color: #999999;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-inverse" role="navigation">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="@Url.Action("home", "AdminSide")">
+                <b>   FooTRick</b>
+            </a>
+        </div>
+    </nav>
+
+
+    <div class="container">
+        <div class="row">
+            <h1>Admin Panel</h1>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+                <div class="well">
+                    <div>
+                        <ul class="nav">
+                            <li>
+                                <label class="tree-toggle nav-header">Teams</label>
+                                <ul class="nav tree">
+                                    <li>
+                                        <a href="@Url.Action("home", "AdminSide")">Admin Dashboard</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("seeMatches", "AdminSide")">See Matches</a>
+                                    </li>
+
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                @RenderBody()
+            </div>
+            <footer class="modal-footer">FootRick © Copy Rights Reserved</footer>
+
+</body>
+</html>

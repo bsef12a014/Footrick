@@ -1,0 +1,98 @@
+﻿@model List<termProject.Models.team>
+    @{
+        ViewBag.Title = "update";
+        Layout = "~/Views/shared/adminLayoutPage.cshtml";
+    }
+
+    <div class="container">
+        <div class="row">
+            <h1>Admin Panel</h1>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+                <div class="well">
+                    <div>
+                        <ul class="nav">
+                            <li>
+                                <label label-default="" class="tree-toggle nav-header">Teams</label>
+                                <ul class="nav tree">
+                                    <li>
+                                        <a href="home">Admin Dashboard</a>
+                                    </li>
+
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="col-md-9">
+                <div class="jumbotron">
+
+                    <div class="container">
+
+
+                        <table>
+
+                            <tr>
+                                <td colspan="1"> <label label-default="" class="tree-toggle nav-header">Dashboard : Udpate Teams</label></td>
+
+
+
+                            </tr>
+                        </table>
+                        <form method="post" action="updateSave" enctype="multipart/form-data">
+                            @for (int i = 0; i < Model.Count(); i++)
+                            {
+
+                                <div class="form-group">
+                                    <label for="exampleInputteamName">Team Name</label>
+                                    <input type="text" class="form-control" id="exampleInputteamName" name="name" value="@Model[i].name">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Email address</label>
+                                    <input type="email" class="form-control" id="exampleInputEmail1" name="email" value="@Model[i].email">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Password</label>
+                                    <input type="text" class="form-control" id="exampleInputPassword1" name="password" value="@Model[i].password">
+                                </div>
+
+                                <div class="form-group">
+                                  
+                                    <input type="hidden" class="form-control" name="Id" value="@Model[i].Id">
+                                </div>
+                                
+                                <button type="submit" class="btn btn-default">Update</button>
+
+                                //string src = "delete/" + @Model[i].Id;
+                            }
+
+                        </form>
+
+
+
+
+
+
+
+                        
+
+
+
+
+
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>

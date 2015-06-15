@@ -1,0 +1,35 @@
+﻿@model List<termProject.Models.player>
+@{
+    ViewBag.Title = "players";
+    Layout = "~/Views/shared/layoutPage.cshtml";
+}
+
+
+<div class="container col-md-4">
+
+  
+        @foreach (termProject.Models.player p in Model)
+{
+
+    string imgsrc = "/files/" + p.img;
+    <div class="container navbar-default">
+        <table>
+
+            <tr>
+                <td rowspan="3">
+                    <img src="@imgsrc" height="150" width="150">
+                </td>
+
+
+                <td><b style="font-size:large">Name:@p.name <br>Age: @p.age<br> Position: @p.position</b> </td>
+            </tr>
+        </table>
+    </div>
+<br>
+}
+
+       
+    
+    
+   <div class="col-md-1"></div>
+</div>

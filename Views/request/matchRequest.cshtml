@@ -1,0 +1,99 @@
+﻿@model List<termProject.Models.matchRequest>
+@{
+    ViewBag.Title = "matchRequest";
+
+    Layout = "~/Views/shared/layoutPage.cshtml";
+}
+
+<div class="col-md-9">
+    <div class="jumbotron">
+
+        <div class="container">
+
+
+            <table>
+
+                <tr>
+                    <td colspan="1"> <label class="tree-toggle nav-header">Match Request:</label></td>
+
+                    <td></td>
+
+                </tr>
+
+
+
+                <tr>
+
+                    <td>
+
+                        <div class="list-group">
+                            <form action="@Url.Action("AcceptRequest", "request")" method="post">
+                                @foreach (termProject.Models.matchRequest x in Model)
+                                {
+                                    <input type="hidden" name="id" value="@x.Id" />
+
+                                    <a class="list-group-item">
+                                        <div class="container" style="width:700px; height:200px;font-size:15px">
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <img src="@x.SteamSrc" height="25" width="40" />
+                                                        <b>@x.SteamName</b>
+                                                    </td>
+                                                    <td align="right">
+                                                        <input type="submit" value="Accept" />
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="left">
+                                                        <b>Date: </b>@x.date
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="left">
+                                                        <b>Time: </b>@x.time
+
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="left">
+                                                        <b>Venue: </b>@x.venu
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="qualbtn" width="700px" height="30" class="alert alert-success">
+                                                        Message
+                                                    </td>
+                                                </tr>
+
+                                            </table>
+                                            <div id="qual">
+                                                @x.message
+                                            </div>
+                                        </div>
+                                    </a>
+
+                                }
+
+                            </form>
+                        </div>
+                    </td>
+
+                    <td></td>
+
+                    <td></td>
+
+                </tr>
+
+
+
+            </table>
+
+
+
+
+
+        </div>
+
+    </div>
+</div>

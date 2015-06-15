@@ -1,0 +1,77 @@
+﻿@model List<termProject.Models.team> 
+@{
+    Layout = "~/Views/shared/layoutPage.cshtml";
+    ViewBag.Title = "setDate";
+}
+
+<div class="col-md-9">
+    <div class="jumbotron">
+
+        <div class="container">
+
+
+            <table>
+
+                <tr>
+                    <td colspan="1"> <label class="tree-toggle nav-header">Search Results:</label></td>
+
+                    <td></td>
+
+                </tr>
+
+
+
+                <tr>
+
+                    <td>
+
+                        <div class="list-group">
+                            <form action="seacrhQuery" method="post">
+                                @foreach (termProject.Models.team x in Model)
+                                {
+                                    <input type="hidden" name="id" value="@x.Id" />
+                                    <button type="submit">
+                                        <a class="list-group-item">
+                                            <div style="width:700px; height:100px;font-size:15px">
+                                                <table>
+                                                    <tr>
+                                                        <td rowspan="3">
+                                                            <img src="/files/@x.imgsrc" style="height:80px;width:150px" />
+
+                                                        </td>
+                                                        <td>
+                                                            <b>@x.name</b>
+
+                                                        </td>
+                                                    </tr>
+
+                                                </table>
+                                            </div>
+                                        </a>
+                                    </button>
+                                }
+
+                            </form>
+                        </div>
+                    </td>
+
+                    <td></td>
+
+                    <td></td>
+
+                </tr>
+
+
+
+            </table>
+
+
+
+
+
+        </div>
+
+    </div>
+</div>
+
+

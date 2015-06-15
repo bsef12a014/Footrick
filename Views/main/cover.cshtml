@@ -1,0 +1,87 @@
+﻿@model List<termProject.Models.message>
+@{
+    ViewBag.Title = "cover";
+    
+    Layout="~/Views/shared/layoutPage.cshtml";
+}
+
+
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+
+
+    function f1() {
+        var msg = $('#message').val();
+        var id = $('#teamId').val();
+ 
+        var link = "http://localhost:28800/main/postMessage?message="+ msg+"&teamId="+id;
+        $.getJSON(link, function (d) {
+            $("#maindiv").prepend("<div class=\"container navbar-default\"><div class=\"container col-md-10\"> <h3><img src=\""+d.img+"\" height=\"40\" width=\"40\"><b>"+d.name+"</b> </h3>" + msg + "</div></div><br>");
+            
+        })
+     
+    }
+
+</script>
+
+
+
+        <div class="col-md-8" style="padding-left: 0px;  padding-right: 0px;border:thick">
+
+    <div class="container" style="font-size:xx-large;font-family:Algerian">
+        @Session["Vname"]
+
+    </div>
+
+
+    <div class="container img-thumbnail" style="width:900px;height:400px">
+        <img src="@Session["Vimg"]" style="width:850px;height:380px">
+
+
+    </div>
+
+
+    <div class="container col-md-6">
+        <form method="post" action="wallPost">
+            <b style="font-size:xx-large">What&#039;s in your mind</b>
+            <textarea class="form-control" name="message1" id="message" rows="5"></textarea>
+            <input type="hidden" name="teamId" id="teamId" value="@Session["Vid"]" />
+            <input class="pull-right" type="button" onclick="f1()" value="Post">
+
+        </form>
+
+    </div>
+            <div class="col-md-9">
+                <div class="jumbotron">
+
+                    <div  id="maindiv" class="container">
+
+
+                        @foreach (termProject.Models.message p in Model)
+                        {
+
+                            <div class="container navbar-default">
+
+
+
+                                <div class="container col-md-10">
+                                    <h3><img src="@p.img" height="40" width="40"><b>@p.name</b> </h3>
+                                    @p.message1
+                                </div>
+
+                            </div>
+                            <br>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            </div>
+
+
+            <div class="col-md-5">
+
+            </div>
+
+
+

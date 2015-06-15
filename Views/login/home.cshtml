@@ -1,0 +1,183 @@
+﻿@{
+    ViewBag.Title = "home";
+}
+
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Welcome to FootRick</title>
+
+    <link href="~/content/bootstrap/bootstrap.css" rel="stylesheet" />
+    <script src="~/content/bootstrap/bootstrap.js"></script>
+    <script type="text/javascript">
+
+        var slideimages = new Array() // create new array to preload images
+        slideimages[0] = new Image() // create new instance of image object
+        slideimages[0].src = "/content/images/main1.jpg" // set image object src property to an image's src, preloading that image in the process
+        slideimages[1] = new Image()
+        slideimages[1].src = "/content/images/main2.jpg"
+        slideimages[2] = new Image()
+        slideimages[2].src = "/content/images/main3.jpg"
+    </script>
+
+    <script src="https://code.jquery.com/jquery-1.10.2.js" ></script>
+    <script type="text/javascript">
+
+        
+        function f1() {
+            var email = $('#email').val();
+            var link = "http://localhost:28800/main/checkEmail?email="+email;
+            $.getJSON(link, function (d) {
+
+                if (d == 1) {
+                    alert("Email id exist enter unique email address");
+                    $('#email').val() = "";
+                }
+                else
+                {
+                    $('#check').fadeOut(1000);
+                    alert("Email id is valid ");
+                }
+
+           })
+            
+            }
+        
+    </script>
+
+
+   
+  
+
+</head>
+<body>
+
+    <nav class="navbar navbar-inverse" role="navigation">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="main.html">
+                <b style="font-size:xx-large">   FooTRick</b>
+            </a>
+        </div>
+
+        @using (Html.BeginForm("login", "login", FormMethod.Post, new { @class = "navbar-form navbar-left pull-right" }))
+        {
+
+            <div >
+                <label style="color:white">Email:</label>
+                @Html.TextBox("email",
+    null,
+    new
+    {
+        id = "Email",
+    })
+                <label style="color:white"> password :</label>
+               @Html.Password("Password",null,
+    new
+    {
+        id = "Password"
+    })) 
+
+
+
+
+                <button type="submit" class="btn btn-default">Login</button>
+            </div>
+        }
+
+
+    </nav>
+    <div>
+        <table class="table table-bordered" style="background-color:ghostwhite">
+            <tr>
+                <td width="1000">
+                    <img src="~/content/images/main1.jpg" id="slide" width="1000" height="600" />
+                    <script type="text/javascript">
+
+                        //variable that will increment through the images
+                        var step = 0
+
+                        function slideit() {
+                            //if browser does not support the image object, exit.
+                            if (!document.images)
+                                return
+                            document.getElementById('slide').src = slideimages[step].src
+                            if (step < 2)
+                                step++
+                            else
+                                step = 0
+                            //call function "slideit()" every 2.5 seconds
+                            setTimeout("slideit()", 2500)
+                        }
+
+                        slideit()
+
+                    </script>
+                </td>
+                <td>
+                    <div class="">
+                        <div>
+                            <h1>Sign Up</h1>
+                        </div>
+                        <div> <h4>It&#039;s free and always will be.</h4></div>
+                    </div>
+
+@using (Html.BeginForm("saveLoginData", "login", FormMethod.Post, new {  enctype="multipart/form-data" }))
+        {
+
+                        <div class="form-group">
+                            <label for="exampleInputteamName">Team Name</label>
+                            @Html.TextBox("name",
+    null,
+    new
+    {
+        id = "name",
+        @class = "form-control",
+        @placeholder = "Enter Team Name"
+    })
+
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Email address <input style="margin-left:70px" id="check" onclick="f1()" type="button" value="check availiblity"/></label>
+                            @Html.TextBox("email",
+    null,
+    new
+    {
+        id = "email",
+        @class = "form-control",
+        @placeholder = "Enter email"
+    })
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Password</label>
+                            @Html.Password("password",
+    null,
+    new
+    {
+        id = "password",
+        @class = "form-control",
+        @placeholder = "Password"
+    })  
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputFile">Display Picture</label>
+                            <input type="file" name="file" id="img">
+                        </div>
+                           
+
+
+                        <button type="submit" class="btn btn-default   btn-lg pull-right">Sign Up</button>
+}
+
+
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <footer class="modal-footer">FootRick © Copy Rights Reserved</footer>
+</body>
+</html>

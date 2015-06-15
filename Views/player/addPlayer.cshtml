@@ -1,0 +1,49 @@
+﻿@{
+    ViewBag.Title = "addPlayer";
+
+
+    Layout = "~/Views/shared/layoutPage.cshtml";
+}
+
+    <div class="col-md-7">
+        <form method="post" action="addPlayersaver" enctype="multipart/form-data">
+
+            <div class="form-group">
+                <label for="exampleInputPosition">Player Email</label>
+                <input type="email" class="form-control" name="email" placeholder="Email">
+            </div>
+
+            <div class="form-group">
+                <label for="exampleInputPosition">Player password</label>
+                <input type="password" class="form-control" name="password" placeholder="Password">
+            </div>
+
+            <div class="form-group">
+                <label for="exampleInputPlayerName">Player Name</label>
+                <input type="text" class="form-control" name="name" placeholder="Enter Name">
+            </div>
+
+            <div class="form-group">
+                <label for="exampleInputPlayerEmail">Player Age</label>
+                <input type="text" class="form-control"  name="age" placeholder="Enter Email">
+            </div>
+
+
+            <div class="form-group">
+                <label for="exampleInputPosition">Playing Position</label>
+                <input type="text" class="form-control"  name="position" placeholder="Postion">
+            </div>
+
+            <div class="form-group">
+                <label for="exampleInputFile">Player Display Picture</label>
+                <input type="file" name="file" id="img">
+            </div>
+
+
+            <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+
+
+    </div>
+    <div class="col-md-2"></div>
+</div>

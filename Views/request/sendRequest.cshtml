@@ -1,0 +1,34 @@
+﻿@{
+    ViewBag.Title = "sendRequest";
+    Layout = "~/Views/shared/layoutPage.cshtml";
+}
+
+<div class="col-md-7">
+    <form method="post" action="@Url.Action("setDate", "request")" enctype="multipart/form-data">
+
+        <div class="form-group">
+            <label for="exampleInputPosition">Match Date</label>
+            <input type="date" class="form-control" name="date" placeholder="Enter Date">
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputPosition">Match Time</label>
+            <input type="time" class="form-control" name="time" placeholder="Enter Time">
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputPlayerName">Match Venue</label>
+            <input type="text" class="form-control" name="venu" placeholder="Enter Venue">
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputPlayerEmail">Message</label>
+            <textarea class="form-control" name="message" rows="5" placeholder="Say what you want"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+
+
+</div>
+<div class="col-md-2"></div>

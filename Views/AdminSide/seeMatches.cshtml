@@ -1,0 +1,92 @@
+﻿@model List<termProject.Models.matchRequest>
+@{
+    ViewBag.Title = "seeMatches";
+
+    Layout = "~/Views/shared/adminLayoutPage.cshtml";
+}
+
+
+
+
+        <div class="col-md-9">
+            <div class="jumbotron">
+
+                <div class="container">
+
+                    <table>
+
+                        <tr>
+                            <td colspan="5"> <label class="tree-toggle nav-header">Dashboard : Recent Matches</label></td>
+
+
+
+                        </tr>
+                        </table>
+                    <br />
+                    <br />
+                    <table border="1" style="border:thick">
+                        <tr>
+                            <td width="100"><label class="tree-toggle nav-header">Send Team ID</label></td>
+                            <td width="100"><label class="tree-toggle nav-header">Recieved Team ID</label></td>
+                            <td><label class="tree-toggle nav-header">Date time</label></td>
+                            <td><label class="tree-toggle nav-header">Venue</label></td>
+                            <td><label class="tree-toggle nav-header">Message</label></td>
+                        </tr>
+
+                        @for (int i = 0; i < Model.Count(); i++)
+                        {
+                            //string src = "delete/" + @Model[i].Id;
+                            <tr>
+
+                                <td align="center">
+
+                                    <div class="list-group">
+                                        <a href="@Url.Action("ViewTeam", "AdminSide", new { id = @Model[i].SteamId })">  @Model[i].SteamId</a>
+
+                                    </div>
+                                </td>
+
+                                <td  align="center">
+                                    <div class="list-group">
+                                        <a href="@Url.Action("ViewTeam", "AdminSide", new { id = @Model[i].RteamId })"> @Model[i].RteamId </a>
+
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <div class="list-group">
+                                        @Model[i].date  @Model[i].time
+
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="list-group">
+                                        @Model[i].venu
+
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <div class="list-group">
+                                     @Model[i].message
+
+                                    </div>
+                                </td>
+                            </tr>
+
+                        }
+
+                    </table>
+
+
+
+
+
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+</div>

@@ -1,0 +1,138 @@
+﻿@{
+    ViewBag.Title = "layoutPage";
+}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Footrick</title>
+
+    <link href="~/content/bootstrap/bootstrap.css" rel="stylesheet" />
+    <script src="~/content/bootstrap/bootstrap.js"></script>
+
+    <style>
+        #t1:hover {
+            background-color: #999999;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-inverse" role="navigation">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="@Url.Action("searchCover", "main")">
+                <b>   FooTRick</b>
+            </a>
+        </div>
+
+        @using (Html.BeginForm("Search", "main", FormMethod.Post, new { @class = "navbar-form navbar-left" }))
+        { 
+            
+            <div class="form-group">
+                @Html.TextBox("search",
+    null,
+    new
+    {
+        id = "name",
+        @class = "form-control",
+        @placeholder="Search",
+        style = "width:400px"
+    })
+                
+                <button type="submit" class="btn btn-default"> <img src="~/content/images/glyphicons-28-search.png" height="18" alt="Alternate Text" />  </button>
+            </div>
+        }
+
+
+        <div class="container ">
+            <div>
+                <ul class="nav navbar-nav">
+                    <li class="navbar-inverse"><a href="#">@Session["name"]</a></li>
+                    <li class="navbar-inverse navbar-left pull-right"><a href="#"> <img src ="@Session["img"]" height="25" width="40" /></a></li>
+                </ul>
+
+                @if(Session["playername"]!=null)
+            {
+                    <ul class="nav navbar-nav">
+                    <li class="navbar-inverse"><a href="#">@Session["playername"]</a></li>
+                        <li class="navbar-inverse navbar-left pull-right"><a href="#"> <img src="@Session["playerimg"]" height="25" width="40" /></a></li>
+                    </ul>
+            }
+
+            </div>
+            <div class="pull-right">
+                <ul class="nav navbar-nav">
+                    <li class="navbar-inverse"><a href="/login/home" onclick="f()">logout</a></li>
+                    
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <script>
+
+        function f()
+        {
+            Session["email"]=null;
+            Session["name"]=null;
+            Session["img"]=null;
+            Session["playername"]=null;
+            Session["playerimg"]=null;
+        }
+    </script>
+
+    <div class="row" style="border:thick">
+        <div class="col-md-2 navbar-default">
+
+
+            <div class="container" style="border-collapse:collapse; font-family:Arial; font-size:large ">
+                <table>
+                    @if (@Session["name"] == Session["Vname"] && (@Session["name"] == Session["playername"] || Session["playername"]==null))
+                    { 
+                    <tr id="t1">
+                        <td>
+                            <a style="text-decoration: none" href="@Url.Action("matchRequest", "request")">
+                                Match Requests @if (Session["request"] != null)
+                                { @Session["request"]}
+                            </a>
+
+                        </td>
+                    </tr>
+                    <tr id="t1">
+                        <td>
+                            <a id="t1" style="text-decoration: none" href="/main/addPlayer">  Messages </a>
+                        </td>
+                    </tr>
+                    <tr id="t1">
+                        <td>
+                            <a style="text-decoration: none" href="/player/addPlayer">  Add players </a>
+                        </td>
+                    </tr>
+                    }
+                    <tr id="t1">
+                        <td>
+                            <a style="text-decoration: none" href="/player/players"> Players </a>
+                        </td>
+                    </tr>
+
+                </table>
+            </div>
+            @if (@Session["name"] != Session["Vname"] && Session["playername"] == null)
+                {
+                    <br />
+                    <br />
+                    <div class="container" style="border-collapse:collapse; font-family:Arial; font-size:large ">
+                        Send Match request<br>
+                        <form method="post" action="@Url.Action("sendRequest", "request")/">
+                            <input type="submit" value="Send Request" />
+                        </form>
+                    </div>
+                }
+        </div>
+
+        <div>
+            @RenderBody()
+        </div>
+    </div>
+        <footer class="modal-footer">FootRick © Copy Rights Reserved</footer>
+
+</body>
+</html>

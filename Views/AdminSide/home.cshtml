@@ -1,0 +1,93 @@
+﻿@model List<termProject.Models.team>
+@{
+    ViewBag.Title = "home";
+    Layout = "~/Views/shared/adminLayoutPage.cshtml";
+}
+
+
+
+        <div class="col-md-9">
+            <div class="jumbotron">
+
+                <div class="container">
+
+                    <table>
+                        <tr>
+                            <td colspan="1"> <label class="tree-toggle nav-header">Dashboard : Recent Teams</label></td>
+                            </tr>
+                    </table>
+                    <br/>
+                    <br />
+                    <table border ="1" style="border:thick">
+
+                      
+                        <tr>
+                            <td width="150"><label class="tree-toggle nav-header">Team</label></td>
+                            <td width="150"><label class="tree-toggle nav-header">Email</label></td>
+                            <td width="150"><label class="tree-toggle nav-header">Password</label></td>
+                            <td width="100"><label class="tree-toggle nav-header">Delete</label></td>
+                            <td width="100"><label class="tree-toggle nav-header">Update</label></td>
+                            <td width="100"><label class="tree-toggle nav-header">See Players</label></td>
+                        </tr>
+
+                        @for (int i = 0; i < Model.Count(); i++)
+                        {
+                            //string src = "delete/" + @Model[i].Id;
+                            <tr>
+
+                                <td>
+
+                                    <div class="list-group">
+                                        @Model[i].name
+
+                                    </div>
+                                </td>
+
+                                <td width="90">
+                                    <div class="list-group">
+                                        @Model[i].email
+
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <div class="list-group">
+                                        @Model[i].password
+
+                                    </div>
+                                </td>
+                                <td align="center">
+                                    <form method="post" action="delete">
+                                        <input type="submit" name="btn" value="Delete">
+                                        <input type="hidden" name="id" value="@Model[i].Id">
+                                    </form>
+                                </td>
+
+                                <td align="center">
+                                    <form method="post" action="update">
+                                        <input type="submit" name="btn" value="update">
+                                        <input type="hidden" name="id" value="@Model[i].Id">
+                                    </form>
+                                </td>
+                                <td>
+                                    <a href="@Url.Action("players", "AdminSide", new { id = @Model[i].Id })"><input type="button" value="See Players" /></a>
+
+                                </td>
+                            </tr>
+                          
+                        }
+
+                    </table>
+
+
+
+
+
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+</div>
