@@ -27,7 +27,7 @@
         var validity = 0;
         function f1() {
             var email = $('#email').val();
-            var link = "http://localhost:28800/main/checkEmail?email="+email;
+            var link = "http://footrick.apphb.com/main/checkEmail?email=" + email;
             $.getJSON(link, function (d) {
 
                 if (d == 1) {
