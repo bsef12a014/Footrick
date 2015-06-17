@@ -14,7 +14,7 @@
         var msg = $('#message').val();
         var id = $('#teamId').val();
  
-        var link = "http://localhost:28800/main/postMessage?message="+ msg+"&teamId="+id;
+        var link = "http://footrick.apphb.com/main/postMessage?message=" + msg + "&teamId=" + id;
         $.getJSON(link, function (d) {
             $("#maindiv").prepend("<div class=\"container navbar-default\"><div class=\"container col-md-10\"> <h3><img src=\""+d.img+"\" height=\"40\" width=\"40\"><b>"+d.name+"</b> </h3>" + msg + "</div></div><br>");
             
